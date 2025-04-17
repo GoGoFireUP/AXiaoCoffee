@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="utf-8">
+<title>阿肖咖啡研究所</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="css/normalize.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+  /* 汉堡按钮样式 */
+  .menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+  }
+
+  .menu-toggle img {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* 侧边菜单样式 */
+  .side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 40px 20px;
+    transition: right 0.4s ease;
+    z-index: 1001;
+    opacity: 0;
+  }
+
+  .side-menu.active {
+    right: 0;
+    opacity: 1;
+  }
+
+  .side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .side-menu li {
+    margin: 20px 0;
+    font-size: 18px;
+  }
+
+  .side-menu a {
+    color: white;
+    text-decoration: none;
+  }
+
+  /* 遮罩层（高斯模糊 + 淡灰色） */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .overlay.active {
+    display: block;
+    opacity: 1;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- 汉堡按钮 -->
+<button class="menu-toggle" id="menuToggle">
+  <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/icons/icon-hamburger.svg" alt="菜单">
+</button>
+
+<!-- 侧边菜单 -->
+<nav class="side-menu" id="sideMenu">
+  <ul>
+    <li><a href="#">阿肖的手冲咖啡</a></li>
+    <li><a href="#">阿肖的抖音号</a></li>
+    <li><a href="#">阿肖的微店</a></li>
+  </ul>
+</nav>
+
+<!-- 遮罩层 -->
+<div class="overlay" id="overlay"></div>
+
+<!-- 原页面主内容 -->
+<div class="blog-slider">
+  <div class="blog-slider__wrp swiper-wrapper">
+    <div class="blog-slider__item swiper-slide">
+      <div class="blog-slider__img">
+        <img src="imgs/Logo.png" alt="个人博客">
+      </div>
+      <div class="blog-slider__content">
+        <span class="blog-slider__code">2025-04-09</span>
+        <div class="blog-slider__title">你好，这里是阿肖咖啡研究所</div>
+        <div class="blog-slider__text">水和咖啡粉私语，直到喧嚣沉底，涟漪不过是宁静的回声。---微信号xyh19990813</div>
+        <a href="CoffeeSchool" class="blog-slider__button">进入</a>
+      </div>
+    </div>
+
+    <div class="blog-slider__item swiper-slide">
+      <div class="blog-slider__img">
+        <img src="imgs/抖音.jpg" alt="个人网站">
+      </div>
+      <div class="blog-slider__content">
+        <span class="blog-slider__code">2025-04-09</span>
+        <div class="blog-slider__title">我的个人抖音号</div>
+        <div class="blog-slider__text">建立于1999，致力于分享咖啡新知识。---微信号xyh19990813</div>
+        <a href="https://v.douyin.com/quOwqgsPljI/ 4@2.com" class="blog-slider__button" target="_blank">进入</a>
+      </div>
+    </div>
+
+    <div class="blog-slider__item swiper-slide">
+      <div class="blog-slider__img">
+        <img src="imgs/微店.jpg" alt="其他信息">
+      </div>
+      <div class="blog-slider__content">
+        <span class="blog-slider__code">2025-04-09</span>
+        <div class="blog-slider__title">微店菜单</div>
+        <div class="blog-slider__text">这里不贩卖咖啡，只收留被时间追赶的人。---微信号xyh19990813</div>
+        <a href="https://k.youshop10.com/vdVSYZtc" class="blog-slider__button" target="_blank">详情</a>
+      </div>
+    </div>
+  </div>
+  <div class="blog-slider__pagination"></div>
+</div>
+
+<!-- 脚本部分 -->
+<script src="js/jquery.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const sideMenu = document.getElementById('sideMenu');
+  const overlay = document.getElementById('overlay');
+
+  function toggleMenu() {
+    const isActive = sideMenu.classList.contains('active');
+    if (isActive) {
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    } else {
+      sideMenu.classList.add('active');
+      overlay.classList.add('active');
+    }
+  }
+
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  // ESC 键关闭菜单
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
+      toggleMenu();
+    }
+  });
+</script>
+
+</body>
+</html>

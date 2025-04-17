@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自适应视频教程网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* 顶部区域 - 品牌+LOGO */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        /* 中间区域 - 视频教程 */
+        .video-section {
+            flex: 1;
+            background-color: #ecf0f1;
+            padding: 2rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .video-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .video-container:hover {
+            scroll-behavior: auto;
+        }
+        
+        .video-item {
+            flex: 0 0 auto;
+                width: 23%;
+                margin: 0 1%;
+            scroll-snap-align: start;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .video-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+           /* height: 180px; */
+            background-color: #7f8c8d;
+            position: relative;
+        }
+        .video-thumbnail img{height: 180px;width: 100%;}
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-info {
+            padding: 1rem;
+        }
+        
+        .video-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-desc {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        .promo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .promo-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        a{text-decoration: none;}
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .brand-name {
+                font-size: 1.4rem;
+            }
+            
+            .video-item {
+                width: 250px;
+            }
+            
+           
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .video-item {
+                width: 220px;
+            }           
+        }
+		h2{text-align: center;padding: 27px;color: #333;}
+		</style>
+
+</head>
+<body>
+    <!-- 顶部区域 - 品牌+LOGO -->
+    <header>
+        <div class="logo">LOGO</div>
+        <div class="brand-name">学习平台</div>
+    </header>
+    
+    <!-- 中间区域 - 视频教程 -->
+	<h2>视频教程</h2>
+    <section class="video-section">
+        <div class="video-container" id="videoContainer">
+            <!-- 视频项1 -->
+            <div class="video-item">
+				
+                <div class="video-thumbnail">
+					<img src="001.jpg" alt="">
+					<a href="">
+						 <div class="play-icon">▶</div>
+					</a>   
+                </div>
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+					</div>
+				</a>
+            </div>
+            
+            <!-- 视频项2 -->
+            <div class="video-item">
+                <div class="video-thumbnail">
+					<img src="002.jpg" alt="">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">冲煮教程2</div>
+                    <div class="video-desc">掌握冲煮技巧</div>
+                </div>
+            </div>
+            
+            <!-- 视频项3 -->
+            <div class="video-item">
+                <div class="video-thumbnail">
+					<img src="003.jpg" alt="">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">冲煮教程</div>
+                    <div class="video-desc">冲煮教程操作</div>
+                </div>
+            </div>
+            
+            <!-- 视频项4 -->
+            <div class="video-item">
+                <div class="video-thumbnail">
+					<img src="004.webp" alt="">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">冲煮教程3</div>
+                    <div class="video-desc">如何冲煮教程</div>
+                </div>
+            </div>
+        
+        </div>
+    </section>
+	<style>
+		.pic-desc{font-size: 12px;color: #999;margin-top: 5px;text-indent: 2em;letter-spacing: 1px;}
+	#videoContainer{width: 100%;overflow: auto;	}
+	#pp img{height: 270px;}
+	</style>
+    <!-- 底部区域 - 宣传语+宣传照片 -->
+	<h2>宣传照片</h2>
+    <section class="video-section" >
+        <div class="video-container" id="pp">
+            <!-- 图片1 -->
+            <div class="video-item" >
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+						<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+					</div>
+				</a>
+                <div class="video-thumbnail">
+					<img src="f2.jfif" alt="">  
+                </div>
+            </div>
+            
+            <!-- 图片2 -->
+            <div class="video-item">
+            	<a href="">
+            		<div class="video-info">
+            		    <div class="video-title">冲煮教程</div>
+            		    <div class="video-desc">冲煮教程网页冲煮教程</div>
+            			<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+            		</div>
+            	</a>
+                <div class="video-thumbnail">
+            		<img src="f2.jfif" alt="">  
+                </div>
+            </div>
+            <!-- 图片3 -->
+            <div class="video-item">
+            	<a href="">
+            		<div class="video-info">
+            		    <div class="video-title">冲煮教程</div>
+            		    <div class="video-desc">冲煮教程网页冲煮教程</div>
+            			<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+            		</div>
+            	</a>
+                <div class="video-thumbnail">
+            		<img src="f2.jfif" alt="">  
+                </div>
+            </div>
+			 <!-- 图片4 -->
+			<div class="video-item">
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+						<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+					</div>
+				</a>
+			    <div class="video-thumbnail">
+					<img src="f2.jfif" alt="">  
+			    </div>
+			</div>
+			 <!-- 图片5 -->
+			<div class="video-item">
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+						<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+					</div>
+				</a>
+			    <div class="video-thumbnail">
+					<img src="f2.jfif" alt="">  
+			    </div>
+			</div>
+			 <!-- 图片6 -->
+			<div class="video-item">
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+						<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+					</div>
+				</a>
+			    <div class="video-thumbnail">
+					<img src="001.jpg" alt="">  
+			    </div>
+			</div>
+			 <!-- 图片7 -->
+			<div class="video-item">
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+						<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+					</div>
+				</a>
+			    <div class="video-thumbnail">
+					<img src="001.jpg" alt="">  
+			    </div>
+			</div>
+			 <!-- 图片8 -->
+			<div class="video-item">
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+						<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+					</div>
+				</a>
+			    <div class="video-thumbnail">
+					<img src="001.jpg" alt="">  
+			    </div>
+			</div>
+			<!-- 图片9 -->
+			<div class="video-item">
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+						<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+					</div>
+				</a>
+			    <div class="video-thumbnail">
+					<img src="001.jpg" alt="">  
+			    </div>
+			</div>
+			<!-- 图片10 -->
+			<div class="video-item">
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+						<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+					</div>
+				</a>
+			    <div class="video-thumbnail">
+					<img src="001.jpg" alt="">  
+			    </div>
+			</div>
+			<!-- 图片11 -->
+			<div class="video-item">
+				<a href="">
+					<div class="video-info">
+					    <div class="video-title">冲煮教程</div>
+					    <div class="video-desc">冲煮教程网页冲煮教程</div>
+						<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+					</div>
+				</a>
+			    <div class="video-thumbnail">
+					<img src="001.jpg" alt="">  
+			    </div>
+			</div>
+        <!-- 图片12 -->
+        <div class="video-item">
+        	<a href="">
+        		<div class="video-info">
+        		    <div class="video-title">冲煮教程</div>
+        		    <div class="video-desc">冲煮教程网页冲煮教程</div>
+        			<p class="pic-desc">冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程冲煮教程网页冲煮教程</p>
+        		</div>
+        	</a>
+            <div class="video-thumbnail">
+        		<img src="001.jpg" alt="">  
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+</html>
